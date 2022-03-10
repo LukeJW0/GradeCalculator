@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";;
+    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
 .title {
@@ -44,6 +44,7 @@
 .gradeselect {
     padding: 10% 35% 10% 10%;
     font-size: 1.5vw;
+    background-size: 15%;
 }
 
 .gradeinput {
@@ -87,8 +88,8 @@
 }
 
 .gradestats {
-    width: 95%;
-    margin-left: 1%;
+    width: fit-content;
+    margin-left: 2%;
     margin-top: 2%;
 }
 
@@ -118,6 +119,7 @@
     padding-top: 2%;
     padding-bottom: 2%;
     margin-bottom: 1%;
+    background-size: 5%;
 }
 
 .termtwoclasses, .termthreeclasses, .termfourclasses {
@@ -222,6 +224,7 @@
     width: 25%;
     padding: 0.75% 1%;
     font-size: 1vw;
+    background-size: 7%;
 }
 
 .newgradecalculatortitle {
@@ -387,17 +390,22 @@ button:active {
 }
 
 @media only screen and (orientation: portrait) {
+
     .title {
         font-size: 5vw;
         margin-bottom: 0.5%;
+        margin-left: 1.5%;
+        margin-top: 1%;
     }
 
     .subtitle {
         font-size: 3vw;
+        margin-left: 1.5%;
     }
 
     .header {
         background-position: right;
+        margin-bottom: 2%;
     }
 
     .termbutton {
@@ -423,6 +431,7 @@ button:active {
         -webkit-appearance: none;
         appearance: none;
         background-position-x: 95%;
+        background-size: 3%;
         width: 80%;
         margin: 2% 10%;
         padding-top: 2%;
@@ -441,6 +450,7 @@ button:active {
         -webkit-appearance: none;
         appearance: none;
         background-position-x: 95%;
+        background-size: 15%;
         text-align: left;
     }
 
@@ -452,6 +462,7 @@ button:active {
         margin-right: 1%;
         font-size: 8vw;
         color: #121212;
+        margin-top: 3%;
     }
 
     .gpatext {
@@ -459,6 +470,13 @@ button:active {
         display: flex;
         align-items: center;
         margin: -0.15%;
+        text-align: center;
+    }
+
+    .gradestats {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .infobutton {
@@ -508,6 +526,7 @@ button:active {
         font-size: 3vw;
         margin-top: -0.5%;
         margin-bottom: 2%;
+        border-width: 0.5vw;
     }
 
     .enterscore {
@@ -528,5 +547,14 @@ button:active {
         -webkit-appearance: none;
         appearance: none;
         background-position-x: 95%;
+        background-size: 7%;
+    }
+
+    select {
+        border-width: 0.5vw;
+    }
+
+    button {
+        border-width: 0.5vw;
     }
 }

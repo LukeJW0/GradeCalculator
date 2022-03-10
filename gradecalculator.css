@@ -409,16 +409,28 @@ button:active {
     }
 
     .weightselect {
+        -webkit-appearance: none;
+        appearance: none;
+        background: url("downarrow.png") 96% / 5% no-repeat;
         width: 80%;
-        margin: 1% 10%;
-        padding-top: 0.5%;
-        padding-bottom: 0.5%;
+        margin: 2% 10%;
+        padding-top: 2%;
+        padding-bottom: 2%;
         font-size: 3vw;
+        text-align: center;
     }
 
     .gradeselect {
-        padding: 20%;
+        -webkit-appearance: none;
+        appearance: none;
+        background: url("downarrow.png") 90% / 15% no-repeat;
+        /* background-repeat: no-repeat;
+        background-position: right 4%;
+        background-size: contain;
+        background-origin: content-box; */
+        padding: 30% 60%;
         font-size: 4vw;
+        text-align: left;
     }
 
     .hourlabel {
@@ -495,5 +507,10 @@ button:active {
     .gradeareaselect {
         font-size: 3vw;
         margin-bottom: 2%;
+        padding: 1% 1%;
+        width: 35%;
+        -webkit-appearance: none;
+        appearance: none;
+        background: url("downarrow.png") 96% / 10% no-repeat;
     }
 }

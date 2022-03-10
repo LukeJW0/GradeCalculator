@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,400italic,700italic,700'>
+    <link rel="stylesheet" href="gradecalculator.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <header class="header">
+        <div class="headerleft">
+            <h1 class="title">EPHS Grade Calculator</h1>
+            <h1 class="subtitle">Made by Luke Withers</h1>
+        </div>
+    </header>
+    <div class="gpa">
+        <!-- <button id="gpabutton" class="navbutton">GPA</button> -->
+        <div class="termbuttons">
+            <button class="termbutton" id="termonebutton">Term 1</button>
+            <button class="termbutton" id="termtwobutton">Term 2</button>
+            <button class="termbutton" id="termthreebutton">Term 3</button>
+            <button class="termbutton" id="termfourbutton">Term 4</button>
+        </div>
+        <div class="termoneclasses term">
+            <div class="classes">
+                <div class="hourone">
+                    <div class="houronegrade">
+                        <h1 id="houronelabel" class="hourlabel">Hour 1</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourone" class="gradeselect termone">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termoneweight tonehouroneweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+                <div class="hourtwo">
+                    <div class="hourtwograde">
+                        <h1 id="hourtwolabel" class="hourlabel">Hour 2</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourtwo" class="gradeselect termone">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termoneweight tonehourtwoweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+                <div class="hourthree">
+                    <div class="hourthreegrade">
+                        <h1 id="hourthreelabel" class="hourlabel">Hour 3</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourthree" class="gradeselect termone">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termoneweight tonehourthreeweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+                <div class="hourfour">
+                    <div class="hourfourgrade">
+                        <h1 id="hourfourlabel" class="hourlabel">Hour 4</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourfour" class="gradeselect termone">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termoneweight tonehourfourweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="termtwoclasses term">
+            <div class="classes">
+                <div class="hourone">
+                    <div class="houronegrade">
+                        <h1 id="houronelabel" class="hourlabel">Hour 1</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourone" class="gradeselect termtwo">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termtwoweight ttwohouroneweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+                <div class="hourtwo">
+                    <div class="hourtwograde">
+                        <h1 id="hourtwolabel" class="hourlabel">Hour 2</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourtwo" class="gradeselect termtwo">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termtwoweight ttwohourtwoweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+                <div class="hourthree">
+                    <div class="hourthreegrade">
+                        <h1 id="hourthreelabel" class="hourlabel">Hour 3</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourthree" class="gradeselect termtwo">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termtwoweight ttwohourthreeweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+                <div class="hourfour">
+                    <div class="hourfourgrade">
+                        <h1 id="hourfourlabel" class="hourlabel">Hour 4</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourfour" class="gradeselect termtwo">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termtwoweight ttwohourfourweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="termthreeclasses term">
+            <div class="classes">
+                <div class="hourone">
+                    <div class="houronegrade">
+                        <h1 id="houronelabel" class="hourlabel">Hour 1</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourone" class="gradeselect termthree">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termthreeweight tthreehouroneweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+                <div class="hourtwo">
+                    <div class="hourtwograde">
+                        <h1 id="hourtwolabel" class="hourlabel">Hour 2</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourtwo" class="gradeselect termthree">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termthreeweight tthreehourtwoweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+                <div class="hourthree">
+                    <div class="hourthreegrade">
+                        <h1 id="hourthreelabel" class="hourlabel">Hour 3</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourthree" class="gradeselect termthree">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termthreeweight tthreehourthreeweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+                <div class="hourfour">
+                    <div class="hourfourgrade">
+                        <h1 id="hourfourlabel" class="hourlabel">Hour 4</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourfour" class="gradeselect termthree">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termthreeweight tthreehourfourweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="termfourclasses term">
+            <div class="classes">
+                <div class="hourone">
+                    <div class="houronegrade">
+                        <h1 id="houronelabel" class="hourlabel">Hour 1</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourone" class="gradeselect termfour">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termfourweight tfourhouroneweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+                <div class="hourtwo">
+                    <div class="hourtwograde">
+                        <h1 id="hourtwolabel" class="hourlabel">Hour 2</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourtwo" class="gradeselect termfour">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termfourweight tfourhourtwoweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+                <div class="hourthree">
+                    <div class="hourthreegrade">
+                        <h1 id="hourthreelabel" class="hourlabel">Hour 3</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourthree" class="gradeselect termfour">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termfourweight tfourhourthreeweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+                <div class="hourfour">
+                    <div class="hourfourgrade">
+                        <h1 id="hourfourlabel" class="hourlabel">Hour 4</h1>
+                        <div class="gradeinput">
+                            <!-- <label class="label">Grade - </label> -->
+                            <select name="hourfour" class="gradeselect termfour">
+                                <option class="gradeoption" value="null">N/A</option>
+                                <option class="gradeoption" value="4.0">A</option>
+                                <option class="gradeoption" value="3.7">A-</option>
+                                <option class="gradeoption" value="3.3">B+</option>
+                                <option class="gradeoption" value="3.0">B</option>
+                                <option class="gradeoption" value="2.7">B-</option>
+                                <option class="gradeoption" value="2.3">C+</option>
+                                <option class="gradeoption" value="2.0">C</option>
+                                <option class="gradeoption" value="1.7">C-</option>
+                                <option class="gradeoption" value="1.3">D+</option>
+                                <option class="gradeoption" value="1.0">D</option>
+                                <option class="gradeoption" value="0.7">D-</option>
+                                <option class="gradeoption" value="0.0">I</option>
+                            </select>
+                        </div>
+                    </div>
+                    <select class="weightselect termfourweight tfourhourfourweight">
+                        <option class="weightoption" value="0.0">Regular</option>
+                        <option class="weightoption" value="0.5">Honors</option>
+                        <option class="weightoption" value="1.0">AP/CIS/PSEO</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="gradestats">
+            <h1 id="uwgpa" class="termonetext gpatext">
+                Unweighted GPA: 0.00
+                <button id="uwgpainfo" value="The unweighted GPA considers only grades from the selected term and does not factor in class difficulty." class="infobutton">i</button>
+            </h1>
+            <h1 id="wgpa" class="termonetext gpatext">
+                Weighted GPA: 0.00
+                <button id="wgpainfo" value="The weighted GPA considers only grades from the selected term and weights them. This weighting scale is unofficial but common. It gives an extra 0.5 points for an honors class and an extra 1 point for an AP, CIS, or PSEO class." class="infobutton">i</button>
+            </h1>
+            
+            <br>
+
+            <h1 id="cumulativegpa" class="gpatext">
+                Cumulative Unweighted GPA: 0.00
+                <button id="uwcumgpainfo" value="A cumulative unweighted GPA is the unweighted GPA combining all of the classes from all of the terms." class="infobutton">i</button>
+            </h1>
+            <h1 id="cumulativewgpa" class="gpatext">
+                Cumulative Weighted GPA: 0.00
+                <button id="wcumgpainfo" value="A cumulative weighted GPA is the weighted GPA combining all of the classes from all of the terms. This weighting scale is unofficial but common. It gives an extra 0.5 points for an honors class and an extra 1 point for an AP, CIS, or PSEO class." class="infobutton">i</button>
+            </h1>
+        </div>
+    </div>
+    <h1 class="newgradecalculatortitle">
+        New Grade Calculator
+        <button value="The New Grade Calculator will calculate your grade in a class after a test, assessment, assignment, etc., is entered into Infinite Campus. Put in your formative and summative grades as well as the score you want to check and which category it is graded in." class="infobutton">i</button>
+    </h1>
+    <div class="newgrades">
+        <div class="formative">
+            <h1 class="gradetypelabel">Formative Grade</h1>
+            <div class="formativegrades">
+                <h1 class="gradetypelabels">
+                    Points
+                    <button value="Enter the number of formative points you have out of the total amount of formative points with a / between. For example, 25/35, 254/265, and 245/1024 all work." class="infobutton">i</button>
+                </h1>
+                <h1 class="gradetypelabels">
+                    Weight
+                    <button value="Enter the weight of the formative grade for the class without the percent sign. This is commonly 10% to 20%" class="infobutton">i</button>
+                </h1>
+            </div>
+            <div class="formativegrades">
+                <input type="text" id="formativepercent" class="inputpercent" placeholder="000/000">
+                <input type="number" id="formativeweight" class="inputpercent" placeholder="00">
+            </div>
+        </div>
+        <div class="summative">
+            <h1 class="gradetypelabel">Summative Grade</h1>
+            <div class="formativegrades">
+                <h1 class="gradetypelabels">
+                    Points
+                    <button value="Enter the number of summative points you have out of the total amount of summative points with a / between. For example, 25/35, 254/265, and 245/1024 all work." class="infobutton">i</button>
+                </h1>
+                <h1 class="gradetypelabels">
+                    Weight
+                    <button value="Enter the weight of the summative grade for the class without the percent sign. This is commonly 80% to 90%" class="infobutton">i</button>
+                </h1>
+            </div>
+            <div class="formativegrades">
+                <input type="text" id="summativepercent" class="inputpercent" placeholder="000/000">
+                <input type="number" id="summativeweight" class="inputpercent" placeholder="00">
+            </div>
+        </div>
+    </div>
+    <div class="enterscore">
+        <h1 class="scorelabel">
+            Your Score
+            <button value="Enter the score you will or may get. Format it with a / in between. For example, 25/25 and 48.5/50 both work." class="infobutton">i</button>
+        </h1>
+        <div class="scoreinput">
+            <input type="text" id="scorebox" class="inputpercent" placeholder="00/00">
+        </div>
+        <div class="gradetype">
+            <select class="gradeareaselect">
+                <option class="weightoption" value="Summative">Summative</option>
+                <option class="weightoption" value="Formative">Formative</option>
+            </select>
+            <!-- <select name="gradegoal" class="goalselect gradegoal">
+                <option class="goaloption" value="92.5">A</option>
+                <option class="goaloption" value="89.5">A-</option>
+                <option class="goaloption" value="86.5">B+</option>
+                <option class="goaloption" value="82.5">B</option>
+                <option class="goaloption" value="79.5">B-</option>
+                <option class="goaloption" value="76.5">C+</option>
+                <option class="goaloption" value="72.5">C</option>
+                <option class="goaloption" value="69.5">C-</option>
+                <option class="goaloption" value="66.5">D+</option>
+                <option class="goaloption" value="62.5">D</option>
+                <option class="goaloption" value="59.5">D-</option>
+                <option class="goaloption" value="0.0">I</option>
+            </select> -->
+        </div>
+    </div>
+    <h1 id="newscorelabel" class="gpatext">Your Grade Will Be: --%</h1>
+    <br>
+    <br>
+    <div class="infopopup">
+        <p class="infotext"></p>
+        <div class="inforesponseparent">
+            <button class="inforesponse">Got it</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <script src="gradecalculator.js"></script>
+</body>
+
+</html>

@@ -42,8 +42,12 @@
 }
 
 .gradeselect {
-    padding: 0.5%;
+    padding: 10% 35% 10% 10%;
     font-size: 1.5vw;
+}
+
+.gradeinput {
+    width: 20%;
 }
 
 .label {
@@ -260,7 +264,7 @@
 .inputpercent {
     appearance: none;
     background-color: rgba(210, 210, 210, 0.75);
-    border: 2px solid #121212;
+    border: 0.2vw solid #121212;
     border-radius: 4px;
     color: #121212;
     display: inline-block;
@@ -278,7 +282,7 @@
     text-decoration: none;
     width: 20%;
     user-select: none;
-    -webkit-user-select: none;
+    -webkit-user-select: text;
     touch-action: manipulation;
 }
 
@@ -292,7 +296,10 @@ input[type=number] {
 }
 
 select {
-    /* appearance: none; */
+    background: url("selectarrow.png") no-repeat right rgba(221, 221, 221, 0);
+    -webkit-appearance: none;
+    appearance: none;
+    background-position-x: 95%;
     background-color: rgba(210, 210, 210, 0.75);
     border: 0.2vw solid #121212;
     border-radius: 4px;
@@ -409,9 +416,13 @@ button:active {
     }
 
     .weightselect {
+        /* -webkit-appearance: none;
+        appearance: none;
+        background: url("downarrow.png") 96% / 5% no-repeat; */
+        background: url("selectarrow.png") no-repeat right rgba(221, 221, 221, 0);
         -webkit-appearance: none;
         appearance: none;
-        background: url("downarrow.png") 96% / 5% no-repeat;
+        background-position-x: 95%;
         width: 80%;
         margin: 2% 10%;
         padding-top: 2%;
@@ -421,16 +432,20 @@ button:active {
     }
 
     .gradeselect {
+        padding-top: 15%;
+        padding-left: 20%;
+        padding-right: 25%;
+        padding-bottom: 15%;
+        font-size: 4vw;
+        background: url("selectarrow.png") no-repeat right rgba(221, 221, 221, 0);
         -webkit-appearance: none;
         appearance: none;
-        background: url("downarrow.png") 90% / 15% no-repeat;
-        /* background-repeat: no-repeat;
-        background-position: right 4%;
-        background-size: contain;
-        background-origin: content-box; */
-        padding: 30% 60%;
-        font-size: 4vw;
+        background-position-x: 95%;
         text-align: left;
+    }
+
+    .gradeinput {
+        width: 20%;
     }
 
     .hourlabel {
@@ -509,8 +524,9 @@ button:active {
         margin-bottom: 2%;
         padding: 1% 1%;
         width: 35%;
+        background: url("selectarrow.png") no-repeat right rgba(221, 221, 221, 0);
         -webkit-appearance: none;
         appearance: none;
-        background: url("downarrow.png") 96% / 10% no-repeat;
+        background-position-x: 95%;
     }
 }

@@ -21,7 +21,6 @@
 }
 
 .header {
-    background: linear-gradient(180deg, rgba(216, 38, 47, 1) 0%, rgba(178, 40, 47, 1) 100%);
     padding: 0.75%;
     padding-top: 0.5%;
     box-shadow: 0 12px 30px 0 rgba(0,0,0,0.25), 0 17px 34px 0 rgba(0,0,0,0.25);
@@ -30,10 +29,23 @@
     background-position: center;
     background-size: contain;
     background-origin: content-box;
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     position: relative;
     z-index: 4;
+}
+
+.yearselect {
+    width: fit-content;
+    padding: 15% 45% 15% 20%;
+    background-size: 12%;
+    font-size: 1.5vw;
+}
+
+.headerright {
+    margin-right: 5%;
 }
 
 .navbutton {
@@ -109,7 +121,7 @@
 .termbutton {
     font-size: 1.2vw;
     padding: 1% 1.5%;
-    box-shadow: 4px 7px 8px 0 rgba(0,0,0,0.1), 6px 10px 10px 0 rgba(0,0,0,0.1);
+    box-shadow: 2px 4px 6px 0 rgba(0,0,0,0.25), 4px 7px 8px 0 rgba(0,0,0,0.25);
 }
 
 .weightselect {
@@ -303,7 +315,7 @@ select {
     -webkit-appearance: none;
     appearance: none;
     background-position-x: 95%;
-    background-color: rgba(210, 210, 210, 0.75);
+    background-color: rgba(210, 210, 210, 1);
     border: 0.2vw solid #121212;
     border-radius: 4px;
     box-sizing: border-box;
@@ -339,7 +351,7 @@ select:hover {
 
 button {
     /* appearance: none; */
-    background-color: rgba(210, 210, 210, 0.75);
+    background-color: rgb(222, 222, 222);
     border: 0.2vw solid #121212;
     border-radius: 4px;
     box-sizing: border-box;
@@ -373,7 +385,7 @@ button:disabled {
 button:hover {
     color: rgb(255, 255, 255);
     background-color: #121212;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    box-shadow: 2px 4px 6px 0 rgba(0,0,0,0.25), 4px 7px 8px 0 rgba(0,0,0,0.25);
     transform: translateY(-2px);
 }
 
@@ -477,6 +489,7 @@ button:active {
         width: fit-content;
         margin-left: auto;
         margin-right: auto;
+        margin-top: 7%;
     }
 
     .infobutton {
@@ -536,6 +549,10 @@ button:active {
     
     .scorelabel {
         font-size: 5vw;
+    }
+
+    #newscorelabel {
+        margin-top: 7%;
     }
     
     .gradeareaselect {

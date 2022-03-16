@@ -39,13 +39,23 @@
 
 .yearselect {
     width: fit-content;
-    padding: 15% 45% 15% 20%;
+    padding: 0.75vw 3vw 0.75vw 1.3vw;
     background-size: 12%;
     font-size: 1.5vw;
+    margin: 0 0 0 0;
 }
 
 .headerright {
-    margin-right: 5%;
+    margin-right: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.infobuttonheader {
+    padding: 0.75vw 2.15vw 0.75vw 2.15vw;
+    font-size: 1.5vw;
+    margin: 0 1% 0 0;
 }
 
 .navbutton {
@@ -183,6 +193,29 @@
 }
 
 .infotext {
+    font-size: 1.5vw;
+}
+
+.startpopup {
+    background-color: rgb(222, 222, 222);
+    padding: 2%;
+    box-shadow: 4px 7px 8px 0 rgba(0,0,0,0.5), 6px 10px 10px 0 rgba(0,0,0,0.5);
+    border-radius: 8px;
+    position: fixed;
+    z-index: 1;
+    width: 60%;
+    top: 15%;
+    left: 20%;
+    border: 0.2vw solid #121212;
+    display: none;
+}
+
+.startresponseparent {
+    display: flex;
+    justify-content: center;
+}
+
+.starttext {
     font-size: 1.5vw;
 }
 
@@ -513,6 +546,10 @@ button:active {
     .inforesponse {
         font-size: 3vw;
     }
+    
+    .startresponse {
+        font-size: 3vw;
+    }
 
     .newgradecalculatortitle {
         font-size: 7vw;
@@ -573,5 +610,19 @@ button:active {
 
     button {
         border-width: 0.5vw;
+    }
+
+    .yearselect {
+        font-size: 4vw;
+        padding: 1.75vw 4vw 1.75vw 2.3vw;
+    }
+
+    .infobuttonheader {
+        font-size: 4vw;
+        padding: 1.75vw 3.15vw 1.75vw 3.15vw;
+    }
+
+    .headerright {
+        margin: auto 1% auto auto;
     }
 }

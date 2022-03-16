@@ -542,6 +542,11 @@ button:active {
         font-size: 4vw;
         text-align: center;
     }
+    
+    .starttext {
+        font-size: 4vw;
+        text-align: center;
+    }
 
     .inforesponse {
         font-size: 3vw;

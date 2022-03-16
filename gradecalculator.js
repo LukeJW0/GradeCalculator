@@ -6,23 +6,20 @@ $(document).ready(function () {
         localStorage.clear();
     });
 
-    var UWGPAArr = [null, null, null, null];
-    var WGPAArr = [null, null, null, null];
-    var UWYearArr = [null, null, null, null];
-    var WYearArr = [null, null, null, null];
+    $('.yearselect').children().eq(0).prop('selected', true).trigger('change');
+
+    var UWPtsArr = [null, null, null, null];
+    var WPtsArr = [null, null, null, null];
     var classesArr = [null, null, null, null];
+    var UWYearPtsArr = [null, null, null, null];
+    var WYearPtsArr = [null, null, null, null];
+    var YearClassesArr = [null, null, null, null];
 
     var selectedYear = 'One';
     var selectedYearInt = 1;
 
     var GradesArr = ["null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"];
-    var yearTwoGradesArr = ["null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"];
-    var yearThreeGradesArr = ["null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"];
-    var yearFourGradesArr = ["null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"];
     var WeightsArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    var yearTwoWeightsArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    var yearThreeWeightsArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    var yearFourWeightsArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
     var selectedTerm = 'one';
     var selectedTermInt = 1;
@@ -41,17 +38,16 @@ $(document).ready(function () {
         var cumulativeWGPA = 0.0;
         var cumulativeGPAPoints = 0.0;
         var cumulativeWGPAPoints = 0.0;
-        var cumulativeYears = 0.0;
-        var fullyearGPA = 0.0;
-        var fullyearWGPA = 0.0;
+        var cumulativeClasses = 0.0;
         var fullyearGPAPoints = 0.0;
         var fullyearWGPAPoints = 0.0;
-        var fullyearTerms = 0.0;
         var fullyearClasses = 0.0;
 
         var totalGPAPoints = 0.0;
         var totalWGPAPoints = 0.0;
         var classesEntered = 0.0;
+        var currentGPA = 0.0;
+        var currentWGPA = 0.0;
 
         var nullCount = 0;
 
@@ -59,8 +55,11 @@ $(document).ready(function () {
             var gradeWeight = ".t" + selectedTerm + $(this).attr('name') + 'weight';
             if ($(this).val() != "null") {
                 if ($(this).val() == '0.0') {
-                    // if pseo only add 0.5
-                    classesEntered += 1.0;
+                    if ($(gradeWeight).find(':selected').text() == "PSEO") {
+                        classesEntered += 0.5;
+                    } else {
+                        classesEntered += 1.0;
+                    }
                 } else {
                     var hour = 0;
                     if ($(this).attr('name') == 'hourone') {
@@ -82,7 +81,6 @@ $(document).ready(function () {
                         WeightsArr[index] = $(gradeWeight).find(':selected').index();
                         localStorage.setItem('year' + selectedYear + 'GradesArr', JSON.stringify(GradesArr));
                         localStorage.setItem('year' + selectedYear + 'WeightsArr', JSON.stringify(WeightsArr));
-                        // alert('3');
                     } else {
                         totalGPAPoints += parseFloat($(this).val());
                         totalWGPAPoints += parseFloat($(this).val());
@@ -92,17 +90,7 @@ $(document).ready(function () {
                         WeightsArr[index] = $(gradeWeight).find(':selected').index();
                         localStorage.setItem('year' + selectedYear + 'GradesArr', JSON.stringify(GradesArr));
                         localStorage.setItem('year' + selectedYear + 'WeightsArr', JSON.stringify(WeightsArr));
-                        // alert('4');
                     }
-                    // alert('5');
-                    // localStorage.setItem("term" + selectedTerm + $(this).attr('name'), $(this).val());
-                    // // alert('6');
-                    // // alert($(gradeWeight).find(':selected').text());
-                    // localStorage.setItem("t" + selectedTerm + $(this).attr('name') + 'weight', $(gradeWeight).find(':selected').text());
-                    // alert('7');
-                    // alert(localStorage.getItem("t" + selectedTerm + $(this).attr('name') + 'weight'));
-                    // alert($(gradeWeight).find(':selected').text());
-                    // alert(GradesArr);
                 }
             } else {
                 nullCount += 1;
@@ -122,7 +110,7 @@ $(document).ready(function () {
                 localStorage.setItem('year' + selectedYear + 'WeightsArr', JSON.stringify(WeightsArr));
             }
         });
-        // alert(nullCount);
+        
         var valsArr = [0.0, 0.5, 1.0, 0.5];
         for (let i = 0; i < 16; i++) {
             if (GradesArr[i] != "null") {
@@ -136,77 +124,84 @@ $(document).ready(function () {
                 }
             }
         }
+        var currentFullYearGPA;
+        var currentFullYearWGPA;
         if (fullyearClasses > 0) {
-            UWYearArr[selectedYearInt - 1] = fullyearGPAPoints / fullyearClasses;
-            WYearArr[selectedYearInt - 1] = fullyearWGPAPoints / fullyearClasses;
+            UWYearPtsArr[selectedYearInt - 1] = fullyearGPAPoints;
+            WYearPtsArr[selectedYearInt - 1] = fullyearWGPAPoints;
+            YearClassesArr[selectedYearInt - 1] = fullyearClasses;
+            currentFullYearGPA = fullyearGPAPoints / fullyearClasses;
+            currentFullYearWGPA = fullyearWGPAPoints / fullyearClasses;
+        } else {
+            UWYearPtsArr[selectedYearInt - 1] = null;
+            WYearPtsArr[selectedYearInt - 1] = null;
+            YearClassesArr[selectedYearInt - 1] = null;
+            currentFullYearGPA = 0;
+            currentFullYearWGPA = 0;
         }
 
+        for (let i = 0; i < 4; i++) {
+            if (UWYearPtsArr[i] != null) {
+                cumulativeGPAPoints += UWYearPtsArr[i];
+                cumulativeWGPAPoints += WYearPtsArr[i];
+                cumulativeClasses += YearClassesArr[i];
+            }
+        }
+
+        cumulativeGPA = cumulativeGPAPoints / cumulativeClasses;
+        cumulativeWGPA = cumulativeWGPAPoints / cumulativeClasses;
+        console.log(cumulativeGPAPoints);
+        console.log(cumulativeGPA);
+        console.log(cumulativeClasses);
+
         if (nullCount == 4) {
-            UWGPAArr[selectedTermInt - 1] = null;
-            WGPAArr[selectedTermInt - 1] = null;
+            UWPtsArr[selectedTermInt - 1] = null;
+            WPtsArr[selectedTermInt - 1] = null;
             $('#uwgpa').text("Unweighted GPA: " + (0.00).toFixed(2));
             $('#uwgpa').append(uwgpainfo);
             $('#wgpa').text("Weighted GPA: " + (0.00).toFixed(2));
             $('#wgpa').append(wgpainfo);
-            // for (let i = 0; i < 4; i++) {
-            //     if (UWGPAArr[i] != null) {
-            //         fullyearGPAPoints += UWGPAArr[i];
-            //         fullyearWGPAPoints += WGPAArr[i];
-            //         fullyearTerms += 1.0;
-            //     }
-            // }
 
             if (fullyearClasses == 0) {
                 $('#fullyeargpa').text("Full Year Unweighted GPA: " + (0.00).toFixed(2));
                 $('#fullyeargpa').append(uwfullyrgpainfo);
                 $('#fullyearwgpa').text("Full Year Weighted GPA: " + (0.00).toFixed(2));
                 $('#fullyearwgpa').append(wfullyrgpainfo);
+
+                $('#cumulativegpa').text("Cumulative Unweighted GPA: " + (cumulativeGPA).toFixed(2));
+                $('#cumulativegpa').append(uwcumulativegpainfo);
+                $('#cumulativewgpa').text("Cumulative Weighted GPA: " + (cumulativeWGPA).toFixed(2));
+                $('#cumulativewgpa').append(wcumulativegpainfo);
                 return;
             }
 
-            // fullyearGPA = fullyearGPAPoints / fullyearTerms;
-            // fullyearWGPA = fullyearWGPAPoints / fullyearTerms;
-
-            $('#fullyeargpa').text("Full Year Unweighted GPA: " + (UWYearArr[selectedYearInt - 1]).toFixed(2));
+            $('#fullyeargpa').text("Full Year Unweighted GPA: " + (currentFullYearGPA).toFixed(2));
             $('#fullyeargpa').append(uwfullyrgpainfo);
-            $('#fullyearwgpa').text("Full Year Weighted GPA: " + (WYearArr[selectedYearInt - 1]).toFixed(2));
+            $('#fullyearwgpa').text("Full Year Weighted GPA: " + (currentFullYearWGPA).toFixed(2));
             $('#fullyearwgpa').append(wfullyrgpainfo);
+            
+            $('#cumulativegpa').text("Cumulative Unweighted GPA: " + (cumulativeGPA).toFixed(2));
+            $('#cumulativegpa').append(uwcumulativegpainfo);
+            $('#cumulativewgpa').text("Cumulative Weighted GPA: " + (cumulativeWGPA).toFixed(2));
+            $('#cumulativewgpa').append(wcumulativegpainfo);
             return;
         }
 
-        UWGPAArr[selectedTermInt - 1] = totalGPAPoints / classesEntered;
-        WGPAArr[selectedTermInt - 1] = totalWGPAPoints / classesEntered;
+        UWPtsArr[selectedTermInt - 1] = totalGPAPoints;
+        WPtsArr[selectedTermInt - 1] = totalWGPAPoints;
+        classesArr[selectedTermInt - 1] = classesEntered;
+        
+        currentGPA = totalGPAPoints / classesEntered;
+        currentWGPA = totalWGPAPoints / classesEntered;
 
-        for (let i = 0; i < 4; i++) {
-            if (UWYearArr[i] != null) {
-                cumulativeGPAPoints += UWYearArr[i];
-                cumulativeWGPAPoints += WYearArr[i];
-                cumulativeYears += 1.0;
-            }
-        }
-
-        cumulativeGPA = cumulativeGPAPoints / cumulativeYears;
-        cumulativeWGPA = cumulativeWGPAPoints / cumulativeYears;
-
-        // UWYearArr[selectedYearInt - 1] = fullyearGPAPoints / fullyearTerms;
-        // WYearArr[selectedYearInt - 1] = fullyearWGPAPoints / fullyearTerms;
-
-        // for (let i = 0; i < 4; i++) {
-        //     if (UWCumArr[i] != null) {
-        //         totalGPAPoints += UWGPAArr[i];
-        //         fullyearWGPAPoints += WGPAArr[i];
-        //         fullyearTerms += 1.0;
-        //     }
-        // }
-
-        $('#uwgpa').text("Unweighted GPA: " + (UWGPAArr[selectedTermInt - 1]).toFixed(2));
+        $('#uwgpa').text("Unweighted GPA: " + (currentGPA).toFixed(2));
         $('#uwgpa').append(uwgpainfo);
-        $('#wgpa').text("Weighted GPA: " + (WGPAArr[selectedTermInt - 1]).toFixed(2));
+        $('#wgpa').text("Weighted GPA: " + (currentWGPA).toFixed(2));
         $('#wgpa').append(wgpainfo);
 
-        $('#fullyeargpa').text("Full Year Unweighted GPA: " + (UWYearArr[selectedYearInt - 1]).toFixed(2));
+        $('#fullyeargpa').text("Full Year Unweighted GPA: " + (currentFullYearGPA).toFixed(2));
         $('#fullyeargpa').append(uwfullyrgpainfo);
-        $('#fullyearwgpa').text("Full Year Weighted GPA: " + (WYearArr[selectedYearInt - 1]).toFixed(2));
+        $('#fullyearwgpa').text("Full Year Weighted GPA: " + (currentFullYearWGPA).toFixed(2));
         $('#fullyearwgpa').append(wfullyrgpainfo);
 
         $('#cumulativegpa').text("Cumulative Unweighted GPA: " + (cumulativeGPA).toFixed(2));
@@ -215,76 +210,45 @@ $(document).ready(function () {
         $('#cumulativewgpa').append(wcumulativegpainfo);
     });
 
-    // $('.weightselect').each(function() {
-    //     if ($(this).attr('class').split(' ')[1] == 'termoneweight') {
-    //         selectedTerm = 'one';
-    //         selectedTermInt = 1;
-    //     } else if ($(this).attr('class').split(' ')[1] == 'termtwoweight') {
-    //         selectedTerm = 'two';
-    //         selectedTermInt = 2;
-    //     } else if ($(this).attr('class').split(' ')[1] == 'termthreeweight') {
-    //         selectedTerm = 'three';
-    //         selectedTermInt = 3;
-    //     } else if ($(this).attr('class').split(' ')[1] == 'termfourweight') {
-    //         selectedTerm = 'four';
-    //         selectedTermInt = 4;
-    //     }
-    //     var thisGrade = localStorage.getItem($(this).attr('class').split(' ')[2]);
-    //     // alert($(this).attr('class').split(' ')[2]);
-    //     if (thisGrade != null) {
-    //         $(this).children().filter(function(){
-    //             return $(this).text() == thisGrade;
-    //         }).prop('selected', true);
-    //         $(this).trigger('change');
-    //     } 
-    // });
-
-    // loadGrades();
-    // function loadGrades() {
-    //     for (let i = 1; i < 4; i++) {
-    //         $('.yearselect').children().eq(i).prop('selected', true);
-    //         $('.yearselect').trigger('change');
-    //     }
-    //     $('.yearselect').children().eq(0).prop('selected', true);
-    //     $('.yearselect').trigger('change');
-    // }
-    // function loadGrades() {
-    //     // var allGrades = [JSON.parse(localStorage.getItem('yearOneGradesArr')), JSON.parse(localStorage.getItem('yearTwoGradesArr')), JSON.parse(localStorage.getItem('yearThreeGradesArr')), JSON.parse(localStorage.getItem('yearFourGradesArr'))];
-    //     // var allWeights = [JSON.parse(localStorage.getItem('yearOneWeightsArr')), JSON.parse(localStorage.getItem('yearTwoWeightsArr')), JSON.parse(localStorage.getItem('yearThreeWeightsArr')), JSON.parse(localStorage.getItem('yearFourWeightsArr'))];
-    //     var yearsArr = ['One', 'Two', 'Three', 'Four'];
-    //     var valsArr = [0.0, 0.5, 1.0, 0.5];
-    //     for (let j = 0; j < 4; j++) {
-    //         var localfullyearClasses = 0.0;
-    //         var localfullyearGPAPoints = 0.0;
-    //         var localfullyearWGPAPoints = 0.0;
-    //         // alert(j);
-    //         let grades = JSON.parse(localStorage.getItem('year' + yearsArr[j] + 'GradesArr'));
-    //         let weights = JSON.parse(localStorage.getItem('year' + yearsArr[j] + 'WeightsArr'));
-    //         if (grades != null) {
-    //             // alert('g');
-    //             for (let i = 0; i < 16; i++) {
-    //                 // alert(i);
-    //                 if (grades[i] != "null") {
-    //                     localfullyearGPAPoints += parseFloat(grades[i]);
-    //                     localfullyearWGPAPoints += parseFloat(grades[i]);
-    //                     localfullyearWGPAPoints += valsArr[weights[i]];
-    //                     if (weights[i] == 3) {
-    //                         localfullyearClasses += 0.5;
-    //                     } else {
-    //                         localfullyearClasses += 1.0;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //         // alert('h');
-    //         // alert(localfullyearClasses);
-    //         // alert(localfullyearGPAPoints / localfullyearClasses);
-    //         UWYearArr[j] = localfullyearGPAPoints / localfullyearClasses;
-    //         WYearArr[j] = localfullyearWGPAPoints / localfullyearClasses;
-    //         // alert('t');
-    //     }
-    //     setYear();
-    // }
+    function load() {
+        for (let i = 0; i < 4; i++) {
+            var tempSelectedYear = 'One';
+            if (i == 1) {
+                tempSelectedYear = 'Two';
+            } else if (i == 2) {
+                tempSelectedYear = 'Three';
+            } else if (i == 3) {
+                tempSelectedYear = 'Four';
+            }
+            var fullyearGPAPoints = 0.0;
+            var fullyearWGPAPoints = 0.0;
+            var fullyearClasses = 0.0;
+            var loadGradesArr = JSON.parse(localStorage.getItem('year' + tempSelectedYear + 'GradesArr'));
+            var loadWeightsArr = JSON.parse(localStorage.getItem('year' + tempSelectedYear + 'WeightsArr'));
+            var valsArr = [0.0, 0.5, 1.0, 0.5];
+            for (let j = 0; j < 16; j++) {
+                if (loadGradesArr[j] != "null") {
+                    fullyearGPAPoints += parseFloat(loadGradesArr[j]);
+                    fullyearWGPAPoints += parseFloat(loadGradesArr[j]);
+                    fullyearWGPAPoints += valsArr[loadWeightsArr[j]];
+                    if (loadWeightsArr[j] == 3) {
+                        fullyearClasses += 0.5;
+                    } else {
+                        fullyearClasses += 1.0;
+                    }
+                }
+            }
+            var currentFullYearGPA;
+            var currentFullYearWGPA;
+            if (fullyearClasses > 0) {
+                UWYearPtsArr[i] = fullyearGPAPoints;
+                WYearPtsArr[i] = fullyearWGPAPoints;
+                YearClassesArr[i] = fullyearClasses;
+                currentFullYearGPA = fullyearGPAPoints / fullyearClasses;
+                currentFullYearWGPA = fullyearWGPAPoints / fullyearClasses;
+            }
+        }
+    }
 
     setYear();
     function setYear() {
@@ -304,9 +268,7 @@ $(document).ready(function () {
             GradesArr = ["null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"];
             WeightsArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         }
-        // alert(selectedYear);
-        // alert(GradesArr);
-        // 
+
         $('.gradeselect').each(function () {
             if ($(this).attr('class').split(' ')[1] == 'termone') {
                 selectedTerm = 'one';
@@ -333,7 +295,6 @@ $(document).ready(function () {
                 hour = 4;
             }
             var index = ((selectedTermInt - 1) * 4 + hour) - 1;
-            // alert(GradesArr[index]);
     
             var thisWeightSelect = "t" + selectedTerm + $(this).attr('name') + 'weight';
             
@@ -346,6 +307,8 @@ $(document).ready(function () {
             selectedTerm = 'one';
             selectedTermInt = 1;
         });
+        $('.gradeselect').trigger('change');
+        $('#termonebutton').trigger('click');
     }
 
     $('.yearselect').on('change', function() {
@@ -391,16 +354,16 @@ $(document).ready(function () {
             $('.term').css('display', 'none');
             $('.termfourclasses').css('display', 'block');
         }
-        if (UWGPAArr[selectedTermInt - 1] == null) {
+        if (UWPtsArr[selectedTermInt - 1] == null) {
             $('#uwgpa').text("Unweighted GPA: " + (0.00).toFixed(2));
             $('#uwgpa').append(uwgpainfo);
             $('#wgpa').text("Weighted GPA: " + (0.00).toFixed(2));
             $('#wgpa').append(wgpainfo);
             return;
         }
-        $('#uwgpa').text("Unweighted GPA: " + (UWGPAArr[selectedTermInt - 1]).toFixed(2));
+        $('#uwgpa').text("Unweighted GPA: " + (UWPtsArr[selectedTermInt - 1] / classesArr[selectedTermInt - 1]).toFixed(2));
         $('#uwgpa').append(uwgpainfo);
-        $('#wgpa').text("Weighted GPA: " + (WGPAArr[selectedTermInt - 1]).toFixed(2));
+        $('#wgpa').text("Weighted GPA: " + (WPtsArr[selectedTermInt - 1] / classesArr[selectedTermInt - 1]).toFixed(2));
         $('#wgpa').append(wgpainfo);
     });
 
@@ -416,6 +379,14 @@ $(document).ready(function () {
 
     $('.inforesponse').on('click', function () {
         $('.infopopup').css('display', 'none');
+    });
+
+    $('.infobuttonheader').on('click', function () {
+        $('.startpopup').css('display', 'block');
+    });
+
+    $('.startresponse').on('click', function () {
+        $('.startpopup').css('display', 'none');
     });
 
     $('.inputpercent').on('focusout', function () {
@@ -435,9 +406,17 @@ $(document).ready(function () {
 
         if ($('.gradeareaselect').val() == "Summative") {
             var newGrade = (parseFloat($('#summativeweight').val()) * ((summativePoints + newPoints) / (summativeTotalPoints + newTotalPoints))) + (parseFloat($('#formativeweight').val()) * ((formativePoints) / (formativeTotalPoints)));
+            if (isNaN(newGrade)) {
+                $('#newscorelabel').text("Your Grade Will Be: --%");
+                return;
+            }
             $('#newscorelabel').text("Your Grade Will Be: " + newGrade.toFixed(2) + "%");
         } else if ($('.gradeareaselect').val() == "Formative") {
             var newGrade = (parseFloat($('#summativeweight').val()) * ((summativePoints) / (summativeTotalPoints))) + (parseFloat($('#formativeweight').val()) * ((formativePoints + newPoints) / (formativeTotalPoints + newTotalPoints)));
+            if (isNaN(newGrade)) {
+                $('#newscorelabel').text("Your Grade Will Be: --%");
+                return;
+            }
             $('#newscorelabel').text("Your Grade Will Be: " + newGrade.toFixed(2) + "%");
         }
     }

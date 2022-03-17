@@ -7,6 +7,13 @@ $(document).ready(function () {
     });
 
     $('.yearselect').children().eq(0).prop('selected', true).trigger('change');
+    
+    $('.inputpercent').keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+            $(this).blur();
+        }
+    });
 
     var UWPtsArr = [null, null, null, null];
     var WPtsArr = [null, null, null, null];
@@ -150,9 +157,6 @@ $(document).ready(function () {
 
         cumulativeGPA = cumulativeGPAPoints / cumulativeClasses;
         cumulativeWGPA = cumulativeWGPAPoints / cumulativeClasses;
-        console.log(cumulativeGPAPoints);
-        console.log(cumulativeGPA);
-        console.log(cumulativeClasses);
 
         if (nullCount == 4) {
             UWPtsArr[selectedTermInt - 1] = null;
@@ -167,6 +171,14 @@ $(document).ready(function () {
                 $('#fullyeargpa').append(uwfullyrgpainfo);
                 $('#fullyearwgpa').text("Full Year Weighted GPA: " + (0.00).toFixed(2));
                 $('#fullyearwgpa').append(wfullyrgpainfo);
+                
+                if (cumulativeClasses == 0) {
+                    $('#cumulativegpa').text("Cumulative Unweighted GPA: " + (0.00).toFixed(2));
+                    $('#cumulativegpa').append(uwcumulativegpainfo);
+                    $('#cumulativewgpa').text("Cumulative Weighted GPA: " + (0.00).toFixed(2));
+                    $('#cumulativewgpa').append(wcumulativegpainfo);
+                    return;
+                }
 
                 $('#cumulativegpa').text("Cumulative Unweighted GPA: " + (cumulativeGPA).toFixed(2));
                 $('#cumulativegpa').append(uwcumulativegpainfo);
